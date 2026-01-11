@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emma's Interiors | Cherry Blossom Studio</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        @theme {
+            --font-display: "Fredoka", sans-serif;
+            --font-body: "Plus Jakarta Sans", sans-serif;
+            --color-sakura: oklch(85% 0.15 350);
+            --color-vermillion: oklch(65% 0.25 25);
+            --color-petal-white: oklch(98% 0.01 350);
+            --color-stem-green: oklch(80% 0.1 140);
+        }
+
+        body {
+            background: var(--color-petal-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        #custom-cursor {
+            width: 24px;
+            height: 24px;
+            background: var(--color-sakura);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* Organic petal shape */
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease-out, background 0.3s ease, border-radius 0.4s ease;
+            mix-blend-mode: multiply;
+            filter: blur(1px);
+        }
+
+        .cursor-hover {
+            transform: scale(3);
+            background: var(--color-vermillion) !important;
+            border-radius: 50%;
+            mix-blend-mode: normal;
+        }
+
+        .petal {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            fill: var(--color-sakura);
+            opacity: 0.6;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-auto-rows: 280px;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .reveal {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="selection:bg-sakura selection:text-white">
+
+    <div id="custom-cursor"></div>
+    <div id="petal-container"></div>
+
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl px-8 py-5 bg-white/40 backdrop-blur-2xl border border-white/60 rounded-[2rem] flex justify-between items-center shadow-sm">
+        <h1 class="font-display text-3xl font-bold text-vermillion">Emma's<span class="text-sakura">.</span></h1>
+        <div class="space-x-10 font-bold text-slate-800 hidden md:flex items-center">
+            <a href="#about" class="nav-link hover:text-sakura transition-colors">About</a>
+            <a href="#portfolio" class="nav-link hover:text-sakura transition-colors">Portfolio</a>
+            <a href="#" class="nav-link bg-vermillion text-white px-7 py-2.5 rounded-full shadow-lg hover:shadow-vermillion/20 transition-all">Start a Project</a>
+        </div>
+    </nav>
+
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute top-20 right-[10%] w-64 h-64 bg-sakura/20 rounded-full blur-[100px] animate-pulse"></div>
+        <div class="absolute bottom-20 left-[10%] w-80 h-80 bg-vermillion/10 rounded-full blur-[100px]"></div>
+
+        <div class="relative z-10 text-center px-6">
+            <h2 class="font-display text-7xl md:text-[10rem] font-bold text-slate-900 leading-tight">
+                Is <span class="text-sakura italic font-medium leading-none">That</span><br/>
+                <span class="text-vermillion">My Room?</span>
+            </h2>
+        </div>
+    </header>
+
+    <section id="about" class="py-40 px-6 max-w-7xl mx-auto relative z-10">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="relative" id="emma-photo-card">
+                <div class="absolute -top-10 -left-10 w-32 h-32 border-l-4 border-t-4 border-sakura/30 rounded-tl-[4rem]"></div>
+                <div class="relative aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl transition-transform duration-500 ease-out" style="transform-style: preserve-3d;">
+                    <img src="images/emma.jpg" alt="Emma" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <div class="reveal">
+                <h3 class="font-display text-6xl font-bold mb-8 text-slate-900 leading-tight"><span class="text-sakura underline decoration-vermillion decoration-wavy underline-offset-12">About Me</span>.</h3>
+                <div class="space-y-6 text-xl text-slate-600 leading-relaxed">
+                    <p>Hi! I’m Emma Belle Gralinski and I started my own business called <strong><i>Is That My Room?</i></strong>! I’ve always loved decorating, and now I help people make over their bedrooms one at a time. I usually design rooms for kids and teens (ages 3 to 18) to make them look exactly how they’ve always dreamed. But, I can also do adult rooms too for anyone 18 to infinity!</p>
+                                    <h3 class="font-display text-6xl font-bold mb-8 text-slate-900 leading-tight"><span class="text-sakura underline decoration-vermillion decoration-wavy underline-offset-12">My Background</span>.</h3>
+                <div class="space-y-6 text-xl text-slate-600 leading-relaxed">
+                    <p>I’ve always loved dreaming up new designs for bedrooms. It’s so much fun to take a plain room and turn it into something super cool that fits your personality.</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-32 bg-white relative z-10">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-sakura)_0%,_transparent_70%)] opacity-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-8 mb-24 relative">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-vermillion font-bold uppercase tracking-[0.3em] text-xs mb-2 block">Portfolio</span>
+                    <h2 class="font-display text-7xl font-bold text-slate-900">Our Canvas</h2>
+                </div>
+                <p class="text-slate-500 text-xl md:max-w-xs italic border-l-2 border-sakura pl-6">Hand-picked designs for the next generation of dreamers.</p>
+            </div>
+        </div>
+
+        <div id="image-gallery" class="bento-grid gap-8 px-6 md:px-12 relative">
+            </div>
+    </section>
+
+    <footer class="py-20 text-center text-slate-400 font-medium">
+        <p>Made with ❤️ and Petals &copy; 2026 Emma's Interiors</p>
+    </footer>
+
+    <script>
+        // --- 1. PETAL DRIFT SYSTEM ---
+        const petalContainer = document.getElementById('petal-container');
+        for (let i = 0; i < 25; i++) {
+            const petal = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            petal.setAttribute("viewBox", "0 0 24 24");
+            petal.classList.add("petal");
+            // Organic petal path
+            petal.innerHTML = `<path d="M12,2C12,2 4,10 4,16C4,20.4 7.6,24 12,24C16.4,24 20,20.4 20,16C20,10 12,2 12,2Z"/>`;
+            
+            const size = Math.random() * 15 + 10;
+            petal.style.width = `${size}px`;
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.top = `${Math.random() * 100}vh`;
+            petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+            petalContainer.appendChild(petal);
+
+            window.addEventListener('scroll', () => {
+                const speed = (i % 5 + 2) * 0.05;
+                const yPos = (window.scrollY * speed);
+                const xOffset = Math.sin(window.scrollY * 0.002 + i) * 50;
+                petal.style.transform = `translate(${xOffset}px, ${yPos}px) rotate(${(window.scrollY * 0.1) + (i * 10)}deg)`;
+            });
+        }
+
+        // --- 2. CURSOR ---
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        const updateHoverState = () => {
+            document.querySelectorAll('.nav-link, .group, button, a, #image-gallery > div').forEach(el => {
+                el.onmouseenter = () => cursor.classList.add('cursor-hover');
+                el.onmouseleave = () => cursor.classList.remove('cursor-hover');
+            });
+        };
+
+        // --- 3. DYNAMIC GALLERY ---
+        const images = [
+            'images/001.jpg',
+            'images/002.jpg',
+            'images/003.jpg',
+            'images/004.jpg',
+            'images/005.jpg',
+            'images/006.jpg',
+            'images/007.jpg',
+            'images/008.jpg',
+            'images/009.jpg',
+            'images/010.jpg'
+        ];
+
+        const gallery = document.getElementById('image-gallery');
+        images.forEach((src, i) => {
+            const div = document.createElement('div');
+            const layouts = ['md:col-span-2 md:row-span-2', 'md:col-span-1 md:row-span-1', 'md:col-span-1 md:row-span-2'];
+            div.className = `relative overflow-hidden rounded-[2.5rem] group reveal shadow-xl hover:shadow-2xl transition-shadow duration-500 ${layouts[i % 3]}`;
+            div.innerHTML = `
+                <img src="${src}" class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-sakura/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+            `;
+            gallery.appendChild(div);
+        });
+
+        // --- 4. TILT ---
+        const card = document.getElementById('emma-photo-card');
+        card.onmousemove = (e) => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left - r.width/2)/20;
+            const y = (e.clientY - r.top - r.height/2)/20;
+            card.children[1].style.transform = `rotateX(${-y}deg) rotateY(${x}deg)`;
+        };
+        card.onmouseleave = () => card.children[1].style.transform = `rotateX(0) rotateY(0)`;
+
+        // Start observers
+        updateHoverState();
+        const obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('active')), {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+    </script>
+</body>
+</html>
